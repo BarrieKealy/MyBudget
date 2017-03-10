@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <!-- The savings column of listView -->
+    <TextView
+        android:id="@+id/savingsView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+    </TextView>
+
+    <!-- The savings rent/mortgage column of listView -->
+    <TextView
+        android:id="@+id/rentMortgageView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+    </TextView>
+
+    <!-- The bills column of listView -->
+    <TextView
+        android:id="@+id/billsView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+    </TextView>
+
+</LinearLayout>

@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">My Budget (Barrie Kealy)</string>
+    <string name="action_settings">Settings</string>
+    <string name="appDisplayName">My Budget</string>
+    <string name="appDesc">My Budget allows users to enter their monetary information and receive a breakdown of their spending in return.</string>
+    <string name="appMoreInfo">Enter your details now to get started!</string>
+
+    <string name="welcomeText">Please Enter Your Details Below:</string>
+    <string name="weeklyRadio">Weekly</string>
+    <string name="monthlyRadio">Monthly</string>
+    <string name="paymentAmountText">How Much Are You Paid Each Period?</string>
+    <string name="paymentPeriodText">How Often Are You Paid?</string>
+    <string name="amount">Enter Amount</string>
+    <string name="savings">How Much To Save Each Month?</string>
+    <string name="rentMortgageText">Rent/Mortgage A Month?</string>
+    <string name="billsText">Outgoing Bills (Electricity, Water, Oil, etc.)</string>
+    <string name="carYesNoText">Do You Have A Car?</string>
+    <string name="carCheckBox">Car?</string>
+    <string name="savingsGoalText">Savings Goal:</string>
+    <string name="menuInfo">Info</string>
+    <string name="calcBtnText">Calculate</string>
+    <string name="budgetTitle">Your Spending (Monthly):</string>
+    <!--<string name="monthPrompt">Choose Current Month</string>-->
+    <string name="savingsColumnText">Savings Taken</string>
+    <string name="rentColumnText">Rent/Mortgage</string>
+    <string name="billsColumnText">Bills(+150 if Car)</string>
+    <string name="euroSign">€</string>
+    <string name="menuBudget">Budget</string>
+    <string name="menuHome">Home</string>
+    <string name="amountLeft">Amount Left Over(Last Entry):</string>
+    <string name="saveButton">Save 50%?</string>
+    <!--<string-array name="monthArray">
+        <item>January</item>
+        <item>February</item>
+        <item>March</item>
+        <item>April</item>
+        <item>May</item>
+        <item>June</item>
+        <item>July</item>
+        <item>August</item>
+        <item>September</item>
+        <item>October</item>
+        <item>November</item>
+        <item>December</item>
+    </string-array>-->
+</resources>
