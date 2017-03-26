@@ -5,24 +5,26 @@ package ie.barriekealyca1.mybudget.activities.activities;
  * Purpose: Allows a user to enter their income/outgoings and click a calculate button
  *
  * @author Barrie Kealy
- * @version 1.0
+ * @version 2.0
  */
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
+//import android.widget.AdapterView;
+//import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioGroup;
-import android.widget.Spinner;
+//import android.widget.Spinner;
 import android.widget.Toast;
 
 import ie.barriekealyca1.mybudget.R;
 import ie.barriekealyca1.mybudget.activities.activities.Base;
 import ie.barriekealyca1.mybudget.activities.models.Income;
+
+//import static ie.barriekealyca1.mybudget.R.id.monthSpinner;
 
 public class Home extends Base {
 
@@ -66,6 +68,7 @@ public class Home extends Base {
         billsIn = (EditText) findViewById(R.id.bills);
         savingsGoal = (EditText) findViewById(R.id.savingsGoal);
     }
+
         /*THIS CODE NOT WORKING. INTENDED TO BE A SPINNER TO ALLOW USER TO SELECT MONTH, BUT WON'T APPEAR ON VIEW.
         monthSpinner = (Spinner) findViewById(R.id.monthSpinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -73,7 +76,7 @@ public class Home extends Base {
         monthSpinner.setAdapter(adapter);
     }
 
-    @Override
+    //@Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         // On selecting a spinner item
         String item = parent.getItemAtPosition(position).toString();
@@ -159,13 +162,13 @@ public class Home extends Base {
         //Unlikely, but possible.
         if(paymentAmountNum > 0) {
             //Creates a new Income model using data provided above as pararmeters.
-            newIncome(new Income(paymentAmountNum, savingsAmount, rentMortgageAmount, bills));
+            app.newIncome(new Income(paymentAmountNum, savingsAmount, rentMortgageAmount, bills));
             //Used for calculations in Base.java
             totalOutGoing = savingsAmount + rentMortgageAmount + bills;
-            //Used for calculations in Base.java
-            amountLeftOver = paymentAmountNum - totalOutGoing;
-            //Calls setAmountLeftOver from Base.java with amountLeftover as param.
-            setAmountLeftOver(amountLeftOver);
+            //Used for calculations in BudgetApp.java
+            //app.amountLeftOver = paymentAmountNum - totalOutGoing;
+            //Calls setAmountLeftOver from BudgetApp.java with amountLeftover as param.
+            //app.setAmountLeftOver(amountLeftOver);
             //Opens the  Budget Activity.
             startActivity (new Intent(this, Budget.class));
 

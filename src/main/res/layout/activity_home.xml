@@ -13,7 +13,9 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="ie.barriekealyca1.mybudget.activities.activities.Home">
+    tools:context="ie.barriekealyca1.mybudget.activities.activities.Home"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
 
     <TextView
         android:text="@string/welcomeText"
@@ -24,6 +26,19 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:id="@+id/welcomeText" />
+
+    <!--<Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/paymentPeriodText"
+        android:layout_below="@+id/welcomeText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="29dp"
+        android:layout_marginBottom="14dp"
+        android:entries="@array/monthArray"
+        android:prompt="@string/monthPrompt"
+        android:id="@+id/monthSpinner" />-->
 
 
     <TextView
@@ -68,14 +83,14 @@
 
 
     <EditText
+        android:id="@+id/paymentAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
         android:layout_below="@+id/paymentAmountText"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/paymentAmount" />
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:text="@string/savings"
@@ -88,14 +103,14 @@
         android:id="@+id/savingsText" />
 
     <EditText
+        android:id="@+id/savingsAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
         android:layout_below="@+id/savingsText"
         android:layout_alignRight="@+id/paymentAmount"
-        android:layout_alignEnd="@+id/paymentAmount"
-        android:id="@+id/savingsAmount" />
+        android:layout_alignEnd="@+id/paymentAmount" />
 
     <TextView
         android:text="@string/rentMortgageText"
@@ -108,14 +123,14 @@
         android:id="@+id/rentMortageText" />
 
     <EditText
+        android:id="@+id/rentMortgageNum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
         android:layout_below="@+id/rentMortageText"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/rentMortgageNum" />
+        android:layout_alignParentStart="true"/>
 
     <TextView
         android:text="@string/billsText"
@@ -128,11 +143,11 @@
         android:id="@+id/billsText" />
 
     <EditText
+        android:id="@+id/bills"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/bills"
         android:layout_below="@+id/billsText"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -148,44 +163,31 @@
         android:layout_marginTop="26dp"/>
 
     <CheckBox
+        android:id="@+id/carCheckBox"
         android:text="@string/carCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/carCheckBox"
         android:layout_below="@+id/carYesNoText"/>
 
     <TextView
+        android:id="@+id/savingsGoalText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/savingsGoalText"
         android:text="@string/savingsGoalText"
         android:layout_below="@+id/carCheckBox"
         android:layout_marginTop="26dp"/>
 
     <EditText
+        android:id="@+id/savingsGoal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/savingsGoal"
         android:layout_below="@+id/savingsGoalText"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"/>
-
-    <!--<Spinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/calculateButton"
-        android:layout_below="@+id/savingsGoal"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="29dp"
-        android:layout_marginBottom="14dp"
-        android:entries="@array/monthArray"
-        android:prompt="@string/monthPrompt"
-        android:id="@+id/monthSpinner" />-->
 
     <Button
         android:layout_width="wrap_content"

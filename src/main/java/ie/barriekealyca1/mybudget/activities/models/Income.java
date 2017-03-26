@@ -5,12 +5,13 @@ package ie.barriekealyca1.mybudget.activities.models;
  * Purpose: To be able to model an individual Income from a user
  *
  * @author Barrie Kealy
- * @version 1.0
+ * @version 2.0
  */
 
 public class Income {
 
-    private double totalIncome;
+    public int id;
+    public double totalIncome;
     public double savingsAmount;
     public double rentMortgageAmount;
     public double bills;
@@ -27,5 +28,12 @@ public class Income {
         this.savingsAmount = savingsAmount;
         this.rentMortgageAmount = rentMortgageAmount;
         this.bills = bills;
+    }
+
+    public Income() {
+        this.totalIncome = 0.0;
+        this.savingsAmount = 0.0;
+        this.rentMortgageAmount = 0.0;
+        this.bills = 0.0;
     }
 }

@@ -5,12 +5,13 @@ package ie.barriekealyca1.mybudget.activities.activities;
  * Purpose: Used as a superclass to both Home.java and Budget.java to hold common elements.
  *
  * @author Barrie Kealy
- * @version 1.0
+ * @version 2.0
  */
 
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,25 +22,28 @@ import java.util.List;
 
 
 import ie.barriekealyca1.mybudget.R;
+import ie.barriekealyca1.mybudget.activities.main.BudgetApp;
 import ie.barriekealyca1.mybudget.activities.models.Income;
 
 public class Base extends AppCompatActivity {
 
-    //The amount left after all outgoings are paid
-    private static double amountLeftOver;
+    public BudgetApp app;
     //private static int desiredSavings;
     //private static int savingsProgress;
 
-    //A list populated with Income objects
-    public static List<Income> income = new ArrayList<Income>();
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-    /**
-     * Add a new Income object to list. Called by clicking calculate button in Home.java
-     *
-     * @param incomeAdd - A new Income Object to be added to list
-     */
-    public void newIncome(Income incomeAdd) {
-        income.add(incomeAdd);
+        app = (BudgetApp) getApplication();
+        app.dbManager.open();
+        //app.dbManager.setAmountLeftOver(this);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        app.dbManager.close();
     }
 
     /**
@@ -64,22 +68,26 @@ public class Base extends AppCompatActivity {
         super.onPrepareOptionsMenu(menu);
         MenuItem home = menu.findItem(R.id.menuHome);
         MenuItem budget = menu.findItem(R.id.menuBudget);
+        MenuItem reset = menu.findItem(R.id.menuReset);
 
         //If income List is empty don't allow us to go to Budget.java
-        if(income.isEmpty()) {
+        if(app.dbManager.getAll().isEmpty()) {
             budget.setEnabled(false);
+            reset.setEnabled(false);
         }
         //If the list is populated(not empty) allow us to select option
         else {
             budget.setEnabled(true);
+            reset.setEnabled(true);
         }
 
         //If we are in the Home.java activity don't allow us to select the Home option
         if(this instanceof Home) {
             home.setEnabled(false);
             //If the list is populated(not empty) allow us to select option
-            if(!income.isEmpty())
+            if(!app.dbManager.getAll().isEmpty())
                 budget.setVisible(true);
+                reset.setEnabled(true);
         }
         else {
             budget.setVisible(false);
@@ -138,20 +146,9 @@ public class Base extends AppCompatActivity {
         startActivity (new Intent(this, Home.class));
     }
 
-    /**
-     * sets the amount left after paying outgoings
-     * @param amountLeftOver - The amount left
-     */
-    public void setAmountLeftOver(double amountLeftOver) {
-        this.amountLeftOver = amountLeftOver;
-    }
-
-    /**
-     * Gets the amount left over
-     * @return - amountLeftOver
-     */
-    public double getAmountLeftOver() {
-        return amountLeftOver;
+    public void reset(MenuItem item) {
+        app.amountLeftOver = 0;
+        app.dbManager.reset();
     }
 
     /*public void setAmountToSave(double desiredSavings) {

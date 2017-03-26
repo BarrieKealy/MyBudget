@@ -5,7 +5,7 @@ package ie.barriekealyca1.mybudget.activities.activities;
  * Purpose: Display the users outgoings in a ListView and allow them to see how much they have left.
  *
  * @author - Barrie Kealy
- * @version - 1.0
+ * @version - 2.0
  */
 
 import android.content.Context;
@@ -41,14 +41,14 @@ public class Budget extends Base {
         //ListView is formatted by the spendingList XML resource
         listView = (ListView) findViewById(R.id.spendingList);
         //Creates a new IncomeAdapter populated by income objects.
-        IncomeAdapter adapter = new IncomeAdapter(this, income);
+        IncomeAdapter adapter = new IncomeAdapter(this, app.dbManager.getAll());
         //Binds the adapter to the ListView
         listView.setAdapter(adapter);
 
         //Heading for amountLeft
         TextView amountLeftNum = (TextView) findViewById(R.id.amountLeftNum);
         //Calls the getAmountLeftOver() method from Base.java and sets the text to result after converting to String.
-        amountLeftNum.setText(Double.toString(getAmountLeftOver()));
+        amountLeftNum.setText(Double.toString(app.getAmountLeftOver()));
 
         //progressBar   = (ProgressBar)  findViewById(R.id.progressBar);
     }

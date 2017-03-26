@@ -30,4 +30,11 @@ tools:context="ie.app.donation10.ie.app.activities.DonationActivity">
         android:title="@string/menuHome"
         app:showAsAction="never"
         android:onClick="menuHome"/>
+
+    <item
+        android:id="@+id/menuReset"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="@string/menuReset"
+        android:onClick="reset"/>
 </menu>

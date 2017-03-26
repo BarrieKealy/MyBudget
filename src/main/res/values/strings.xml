@@ -29,6 +29,7 @@
     <string name="menuHome">Home</string>
     <string name="amountLeft">Amount Left Over(Last Entry):</string>
     <string name="saveButton">Save 50%?</string>
+    <string name="menuReset">Reset</string>
     <!--<string-array name="monthArray">
         <item>January</item>
         <item>February</item>
