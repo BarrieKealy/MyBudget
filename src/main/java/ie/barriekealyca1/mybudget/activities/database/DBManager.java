@@ -33,12 +33,12 @@ public class DBManager {
         database.close();
     }
 
-    public void add(Income d) {
+    public void add(Income i) {
         ContentValues values = new ContentValues();
-        values.put("totalIncome", d.totalIncome);
-        values.put("savingsAmount", d.savingsAmount);
-        values.put("rentMortgageAmount", d.rentMortgageAmount);
-        values.put("bills", d.bills);
+        values.put("totalIncome", i.totalIncome);
+        values.put("savingsAmount", i.savingsAmount);
+        values.put("rentMortgageAmount", i.rentMortgageAmount);
+        values.put("bills", i.bills);
 
         database.insert("budgets", null, values);
     }
@@ -46,6 +46,19 @@ public class DBManager {
     public List<Income> getAll() {
         List<Income> income = new ArrayList<Income>();
         Cursor cursor = database.rawQuery("SELECT * FROM budgets", null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            Income d = toIncome(cursor);
+            income.add(d);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return income;
+    }
+
+    public List<Income> getSpending() {
+        List<Income> income = new ArrayList<Income>();
+        Cursor cursor = database.rawQuery("SELECT SUM(rentMortgageAmount, bills) FROM budgets", null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             Income d = toIncome(cursor);

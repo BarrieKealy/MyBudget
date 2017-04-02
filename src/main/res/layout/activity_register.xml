@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+       <!-- <LinearLayout
+            android:id="@+id/header"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="100px"
+            android:layout_alignParentTop="true"
+            android:background="@color/splashBg"
+            android:gravity="center"/>
+
+        <LinearLayout
+            android:id="@+id/footer"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="100px"
+            android:layout_alignParentBottom="true"
+            android:background="@color/splashBg"
+            android:gravity="center"/>-->
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:orientation="vertical"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
+
+        <ImageView
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="200px"
+            android:src="@color/splashBg"/>
+
+        <TextView
+            android:id="@+id/registerTop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/registerText" />
+
+            <TextView
+             android:id="@+id/usernameReg"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="@string/usernameRegPrompt" />
+
+            <EditText
+                android:id="@+id/registerUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:hint="@string/prompt_username"/>
+
+            <TextView
+                android:id="@+id/passwordReg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/passwordRegPrompt" />
+
+            <EditText
+                android:id="@+id/registerPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:hint="@string/prompt_password"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/register"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:onClick="register"/>
+
+            <ImageView
+                android:id="@+id/footer"
+                android:layout_width="match_parent"
+                android:layout_height="600px"
+                android:src="@color/splashBg"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</ScrollView>

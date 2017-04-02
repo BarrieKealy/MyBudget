@@ -11,6 +11,7 @@ package ie.barriekealyca1.mybudget.activities.activities;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -67,30 +68,31 @@ public class Base extends AppCompatActivity {
     public boolean onPrepareOptionsMenu(Menu menu) {
         super.onPrepareOptionsMenu(menu);
         MenuItem home = menu.findItem(R.id.menuHome);
-        MenuItem budget = menu.findItem(R.id.menuBudget);
+        //MenuItem budget = menu.findItem(R.id.menuBudget);
         MenuItem reset = menu.findItem(R.id.menuReset);
+        MenuItem logOut = menu.findItem(R.id.menuLogout);
 
         //If income List is empty don't allow us to go to Budget.java
         if(app.dbManager.getAll().isEmpty()) {
-            budget.setEnabled(false);
+            //budget.setEnabled(false);
             reset.setEnabled(false);
         }
         //If the list is populated(not empty) allow us to select option
         else {
-            budget.setEnabled(true);
+            //budget.setEnabled(true);
             reset.setEnabled(true);
         }
 
         //If we are in the Home.java activity don't allow us to select the Home option
         if(this instanceof Home) {
-            home.setEnabled(false);
+            home.setVisible(false);
             //If the list is populated(not empty) allow us to select option
             if(!app.dbManager.getAll().isEmpty())
-                budget.setVisible(true);
+                //budget.setVisible(true);
                 reset.setEnabled(true);
         }
         else {
-            budget.setVisible(false);
+            //budget.setVisible(false);
             home.setVisible(true);
         }
 
@@ -122,23 +124,6 @@ public class Base extends AppCompatActivity {
     }
 
     /**
-     * Shows a Toast on selection of Settings MenuItem
-     * @param item - The menuItem to be clicked
-     */
-    public void settings(MenuItem item)
-    {
-        Toast.makeText(this, "Settings Selected", Toast.LENGTH_SHORT).show();
-    }
-
-    /**
-     * Opens to Budget activity on selection
-     * @param m - The menuItem to be clicked
-     */
-    public void menuBudget(MenuItem m) {
-        startActivity (new Intent(this, Budget.class));
-    }
-
-    /**
      * Opens to Home activity on selection
      * @param m - the MenuItem to be clicked
      */
@@ -149,6 +134,16 @@ public class Base extends AppCompatActivity {
     public void reset(MenuItem item) {
         app.amountLeftOver = 0;
         app.dbManager.reset();
+    }
+
+    public void logOut(MenuItem item) {
+        SharedPreferences.Editor editor = getSharedPreferences("loginPrefs", 0).edit();
+        editor.putBoolean("loggedin", false);
+        editor.commit();
+
+        startActivity(new Intent(Base.this, Login.class)
+        .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+        finish();
     }
 
     /*public void setAmountToSave(double desiredSavings) {

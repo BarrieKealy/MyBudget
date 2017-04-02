@@ -9,15 +9,27 @@ package ie.barriekealyca1.mybudget.activities.activities;
  */
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.text.SpannableString;
+import android.text.style.StyleSpan;
+import android.view.MenuItem;
 import android.view.View;
 //import android.widget.AdapterView;
 //import android.widget.ArrayAdapter;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.RadioGroup;
 //import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import ie.barriekealyca1.mybudget.R;
@@ -50,8 +62,18 @@ public class Home extends Base {
     private RadioGroup periodRadioGroup;
     private CheckBox carCheckBox;
     private EditText paymentAmount, savingsAmountIn, rentMortgage, billsIn, savingsGoal;
-    //private Spinner monthSpinner;
 
+    private SharedPreferences settings;
+
+    private ListView mDrawerList;
+    private ArrayAdapter<String> mAdapter;
+
+    //The nav bar toggle switch
+    private ActionBarDrawerToggle mDrawerToggle;
+    //Nav bar
+    private DrawerLayout mDrawerLayout;
+    //Title when nav drawer is open
+    private String mActivityTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,25 +89,99 @@ public class Home extends Base {
         rentMortgage = (EditText) findViewById(R.id.rentMortgageNum);
         billsIn = (EditText) findViewById(R.id.bills);
         savingsGoal = (EditText) findViewById(R.id.savingsGoal);
+
+        settings = getSharedPreferences("loginPrefs", 0);
+        String username = settings.getString("username", "");
+
+        //Sets text to Username
+        TextView usernameBudget = (TextView) findViewById(R.id.usernameBudget);
+
+        SpannableString spanString = new SpannableString(username);
+        spanString.setSpan(new StyleSpan(Typeface.BOLD), 0, spanString.length(), 0);
+        spanString.setSpan(new StyleSpan(Typeface.ITALIC), 0, spanString.length(), 0);
+        usernameBudget.setText(spanString + ", ");
+
+        //Set the ListView for nav drawer
+        mDrawerList = (ListView)findViewById(R.id.navList);
+        addDrawerItems();
+
+        //For nav drawer icon
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+
+        mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+        mActivityTitle = getTitle().toString();
+
+        setupDrawer();
     }
 
-        /*THIS CODE NOT WORKING. INTENDED TO BE A SPINNER TO ALLOW USER TO SELECT MONTH, BUT WON'T APPEAR ON VIEW.
-        monthSpinner = (Spinner) findViewById(R.id.monthSpinner);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.monthArray, android.R.layout.simple_spinner_dropdown_item);
-        monthSpinner.setAdapter(adapter);
+    private void addDrawerItems() {
+        String[] navArray = { "Home", "Budget"};
+        mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, navArray);
+        mDrawerList.setAdapter(mAdapter);
+
+        mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                selectItem(position);
+                mDrawerLayout.closeDrawer(mDrawerList);
+            }
+        });
     }
 
-    //@Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        // On selecting a spinner item
-        String item = parent.getItemAtPosition(position).toString();
+    private void setupDrawer() {
+        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.drawer_open, R.string.drawer_close) {
 
-        // Showing selected spinner item
-        Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
+            /** Called when a drawer has settled in a completely open state. */
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+                getSupportActionBar().setTitle("Navigation");
+                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
+            }
+
+            /** Called when a drawer has settled in a completely closed state. */
+            public void onDrawerClosed(View view) {
+                super.onDrawerClosed(view);
+                getSupportActionBar().setTitle(mActivityTitle);
+                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
+            }
+        };
+        mDrawerToggle.setDrawerIndicatorEnabled(true);
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
     }
-    public void onNothingSelected(AdapterView<?> arg0) {
-    }*/
+
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        mDrawerToggle.syncState();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        mDrawerToggle.onConfigurationChanged(newConfig);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (mDrawerToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void selectItem(int position) {
+        Intent intent = null;
+        switch (position) {
+            case 0:
+                intent = new Intent(this, Home.class);
+                break;
+            case 1:
+                intent = new Intent(this, Budget.class);
+                break;
+        }
+        startActivity(intent);
+    }
 
     /**
      * Method called when user clicks the calculate button. Does all required calculations and assignments,

@@ -30,18 +30,27 @@
     <string name="amountLeft">Amount Left Over(Last Entry):</string>
     <string name="saveButton">Save 50%?</string>
     <string name="menuReset">Reset</string>
-    <!--<string-array name="monthArray">
-        <item>January</item>
-        <item>February</item>
-        <item>March</item>
-        <item>April</item>
-        <item>May</item>
-        <item>June</item>
-        <item>July</item>
-        <item>August</item>
-        <item>September</item>
-        <item>October</item>
-        <item>November</item>
-        <item>December</item>
-    </string-array>-->
+    <string name="title_activity_login">Sign in</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_username">Username</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_username">This username is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="username">Username</string>
+    <string name="title_activity_test">Sign in</string>
+    <string name="password">Password</string>
+    <string name="btnLoginText">Login</string>
+    <string name="registerMessage">New to myBudget? Tap Here to Register!</string>
+    <string name="registerText">Enter Your Registration Details Below:</string>
+    <string name="usernameRegPrompt">Enter Username:</string>
+    <string name="register">Register</string>
+    <string name="menuLogout">Logout</string>
+    <string name="passwordRegPrompt">Enter Password:</string>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
 </resources>

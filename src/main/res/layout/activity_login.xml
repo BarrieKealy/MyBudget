@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+       <LinearLayout
+           android:gravity="center"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+           android:focusable="true"
+           android:focusableInTouchMode="true">
+
+           <ImageView
+               android:id="@+id/header"
+               android:layout_width="match_parent"
+               android:layout_height="200px"
+               android:src="@color/splashBg"/>
+        <!--<LinearLayout
+            android:id="@+id/footer"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="100px"
+            android:background="@color/splashBg"
+            android:gravity="center" />-->
+
+        <!--<LinearLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@+id/header"
+            android:layout_above="@+id/footer">-->
+
+            <TextView
+                android:id="@+id/Username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/header"
+                android:text="@string/username" />
+
+            <EditText
+                android:id="@+id/username_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/Username"
+                android:inputType="text"
+                android:hint="@string/prompt_username"/>
+
+            <TextView
+                android:id="@+id/Password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/password" />
+
+            <EditText
+                android:id="@+id/password_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/username_login"
+                android:inputType="textPassword"
+                android:hint="@string/prompt_password"/>
+
+            <Button
+                android:id="@+id/btnLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/password_login"
+                android:text="@string/btnLoginText"
+                android:layout_centerHorizontal="true"
+                android:onClick="login"/>
+
+           <TextView
+               android:id="@+id/register_message"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="20dp"
+               android:layout_marginBottom="10dp"
+               android:onClick="register"
+               android:text="@string/registerMessage"
+               android:textSize="16dp" />
+
+           <ImageView
+               android:id="@+id/footer"
+               android:layout_width="match_parent"
+               android:layout_height="600px"
+               android:src="@color/splashBg"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</ScrollView>

@@ -3,12 +3,6 @@
 xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
 tools:context="ie.app.donation10.ie.app.activities.DonationActivity">
-<item
-    android:id="@+id/action_settings"
-    android:orderInCategory="100"
-    android:title="@string/action_settings"
-    app:showAsAction="never"
-    android:onClick="settings"/>
 
 <item
     android:id="@+id/menuInfo"
@@ -17,12 +11,12 @@ tools:context="ie.app.donation10.ie.app.activities.DonationActivity">
     app:showAsAction="never"
     android:onClick="menuInfo"/>
 
-    <item
+   <!-- <item
         android:id="@+id/menuBudget"
         android:orderInCategory="100"
         android:title="@string/menuBudget"
         app:showAsAction="never"
-        android:onClick="menuBudget"/>
+        android:onClick="menuBudget"/>-->
 
     <item
         android:id="@+id/menuHome"
@@ -37,4 +31,11 @@ tools:context="ie.app.donation10.ie.app.activities.DonationActivity">
         app:showAsAction="never"
         android:title="@string/menuReset"
         android:onClick="reset"/>
+
+    <item
+        android:id="@+id/menuLogout"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="@string/menuLogout"
+        android:onClick="logOut"/>
 </menu>

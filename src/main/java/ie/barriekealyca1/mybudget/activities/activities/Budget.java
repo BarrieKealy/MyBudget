@@ -50,15 +50,9 @@ public class Budget extends Base {
         //Calls the getAmountLeftOver() method from Base.java and sets the text to result after converting to String.
         amountLeftNum.setText(Double.toString(app.getAmountLeftOver()));
 
-        //progressBar   = (ProgressBar)  findViewById(R.id.progressBar);
+        //progressBar   = (ProgressBar) findViewById(R.id.progressBar);
     }
 
-    /*CODE NOT WORKING
-    public void onSaveButtonPressed() {
-        progressBar.setMax(getAmountToSave());
-        progressBar.setProgress(getSavingsProgress());
-
-    }*/
 }
 
 /**
